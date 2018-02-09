@@ -541,10 +541,12 @@ ReactGridLayout.propTypes = {
     // Check children keys for duplicates. Throw if found.
     var keys = {};
     _react2.default.Children.forEach(children, function (child) {
-      if (keys[child.key]) {
-        throw new Error('Duplicate child key "' + child.key + '" found! This will cause problems in ReactGridLayout.');
+      if (child) {
+        if (keys[child.key]) {
+          throw new Error('Duplicate child key "' + child.key + '" found! This will cause problems in ReactGridLayout.');
+        }
+        keys[child.key] = true;
       }
-      keys[child.key] = true;
     });
   }
 };

@@ -187,6 +187,7 @@ export default class ReactGridLayout extends React.Component<Props, State> {
       // Check children keys for duplicates. Throw if found.
       var keys = {};
       React.Children.forEach(children, function(child) {
+      if (child){
         if (keys[child.key]) {
           throw new Error(
             'Duplicate child key "' +
@@ -195,6 +196,7 @@ export default class ReactGridLayout extends React.Component<Props, State> {
           );
         }
         keys[child.key] = true;
+      }
       });
     }
   };

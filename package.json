@@ -1,40 +1,34 @@
 {
-  "name": "react-grid-layout",
-  "version": "0.16.3",
-  "description": "A draggable and resizable grid layout with responsive breakpoints, for React.",
-  "main": "index.js",
-  "scripts": {
-    "lint": "make lint",
-    "test": "make test",
-    "build": "make build",
-    "build-example": "make build-example",
-    "view-example": "make view-example",
-    "dev": "make dev",
-    "prepublishOnly": "make build",
-    "validate": "npm ls",
-    "flow": "flow",
-    "precommit": "lint-staged && make lint"
-  },
-  "repository": {
+  "_from": "github:stwime/react-grid-layout",
+  "_id": "react-grid-layout@0.16.3",
+  "_inBundle": false,
+  "_integrity": "sha1-VRpAeB1qlAbKORPqF8cWQGl23Hk=",
+  "_location": "/react-grid-layout",
+  "_phantomChildren": {},
+  "_requested": {
     "type": "git",
-    "url": "git@github.com:STRML/react-grid-layout.git"
+    "raw": "stwime/react-grid-layout",
+    "rawSpec": "stwime/react-grid-layout",
+    "saveSpec": "github:stwime/react-grid-layout",
+    "fetchSpec": null,
+    "gitCommittish": "master"
   },
-  "keywords": [
-    "react",
-    "grid",
-    "drag",
-    "draggable",
-    "resize",
-    "resizable",
-    "fluid",
-    "responsive"
+  "_requiredBy": [
+    "#USER",
+    "/"
   ],
-  "author": "Samuel Reed <samuel.trace.reed@gmail.com> (http://strml.net/)",
-  "license": "MIT",
+  "_resolved": "github:stwime/react-grid-layout#66e86ba882655d3b85ebc9d3816d699878bde87a",
+  "_spec": "stwime/react-grid-layout",
+  "_where": "C:\\git\\dashboard\\analytics-frontend",
+  "author": {
+    "name": "Samuel Reed",
+    "email": "samuel.trace.reed@gmail.com",
+    "url": "http://strml.net/"
+  },
   "bugs": {
     "url": "https://github.com/STRML/react-grid-layout/issues"
   },
-  "homepage": "https://github.com/STRML/react-grid-layout",
+  "bundleDependencies": false,
   "dependencies": {
     "classnames": "2.x",
     "lodash.isequal": "^4.0.0",
@@ -42,6 +36,8 @@
     "react-draggable": "3.x",
     "react-resizable": "1.x"
   },
+  "deprecated": false,
+  "description": "A draggable and resizable grid layout with responsive breakpoints, for React.",
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
@@ -81,14 +77,23 @@
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.1"
   },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org"
-  },
+  "homepage": "https://github.com/STRML/react-grid-layout",
   "jest": {
     "testMatch": [
       "<rootDir>/test/spec/*.js"
     ]
   },
+  "keywords": [
+    "react",
+    "grid",
+    "drag",
+    "draggable",
+    "resize",
+    "resizable",
+    "fluid",
+    "responsive"
+  ],
+  "license": "MIT",
   "lint-staged": {
     "*.{js,jsx}": [
       "prettier --write",
@@ -98,5 +103,27 @@
       "prettier --write",
       "git add"
     ]
-  }
+  },
+  "main": "index.js",
+  "name": "react-grid-layout",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/STRML/react-grid-layout.git"
+  },
+  "scripts": {
+    "build": "make build",
+    "build-example": "make build-example",
+    "dev": "make dev",
+    "flow": "flow",
+    "lint": "make lint",
+    "precommit": "lint-staged && make lint",
+    "prepublishOnly": "make build",
+    "test": "make test",
+    "validate": "npm ls",
+    "view-example": "make view-example"
+  },
+  "version": "0.16.3"
 }

@@ -93,9 +93,9 @@ function cloneLayoutItem(layoutItem) {
  */
 function childrenEqual(a, b) {
   return (0, _lodash2.default)(_react2.default.Children.map(a, function (c) {
-    return c.key;
+    return c && c.key;
   }), _react2.default.Children.map(b, function (c) {
-    return c.key;
+    return c && c.key;
   }));
 }
 
@@ -483,32 +483,34 @@ function synchronizeLayoutWithChildren(initialLayout, children, cols, compactTyp
   // Generate one layout item per child.
   var layout = [];
   _react2.default.Children.forEach(children, function (child, i) {
-    // Don't overwrite if it already exists.
-    var exists = getLayoutItem(initialLayout, String(child.key));
-    if (exists) {
-      layout[i] = cloneLayoutItem(exists);
-    } else {
-      if (!isProduction && child.props._grid) {
-        console.warn("`_grid` properties on children have been deprecated as of React 15.2. " + // eslint-disable-line
-        "Please use `data-grid` or add your properties directly to the `layout`.");
-      }
-      var g = child.props["data-grid"] || child.props._grid;
-
-      // Hey, this item has a data-grid property, use it.
-      if (g) {
-        if (!isProduction) {
-          validateLayout([g], "ReactGridLayout.children");
-        }
-        layout[i] = cloneLayoutItem(_extends({}, g, { i: child.key }));
+    if (child) {
+      // Don't overwrite if it already exists.
+      var exists = getLayoutItem(initialLayout, String(child.key));
+      if (exists) {
+        layout[i] = cloneLayoutItem(exists);
       } else {
-        // Nothing provided: ensure this is added to the bottom
-        layout[i] = cloneLayoutItem({
-          w: 1,
-          h: 1,
-          x: 0,
-          y: bottom(layout),
-          i: String(child.key)
-        });
+        if (!isProduction && child.props._grid) {
+          console.warn("`_grid` properties on children have been deprecated as of React 15.2. " + // eslint-disable-line
+          "Please use `data-grid` or add your properties directly to the `layout`.");
+        }
+        var g = child.props["data-grid"] || child.props._grid;
+
+        // Hey, this item has a data-grid property, use it.
+        if (g) {
+          if (!isProduction) {
+            validateLayout([g], "ReactGridLayout.children");
+          }
+          layout[i] = cloneLayoutItem(_extends({}, g, { i: child.key }));
+        } else {
+          // Nothing provided: ensure this is added to the bottom
+          layout[i] = cloneLayoutItem({
+            w: 1,
+            h: 1,
+            x: 0,
+            y: bottom(layout),
+            i: String(child.key)
+          });
+        }
       }
     }
   });

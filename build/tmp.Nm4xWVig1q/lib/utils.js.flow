@@ -113,8 +113,8 @@ export function cloneLayoutItem(layoutItem: LayoutItem): LayoutItem {
  */
 export function childrenEqual(a: ReactChildren, b: ReactChildren): boolean {
   return isEqual(
-    React.Children.map(a, c => c.key),
-    React.Children.map(b, c => c.key)
+    React.Children.map(a, c => c && c.key),
+    React.Children.map(b, c => c && c.key)
   );
 }
 
@@ -585,6 +585,7 @@ export function synchronizeLayoutWithChildren(
   // Generate one layout item per child.
   let layout: Layout = [];
   React.Children.forEach(children, (child: ReactElement<any>, i: number) => {
+    if (child){
     // Don't overwrite if it already exists.
     const exists = getLayoutItem(initialLayout, String(child.key));
     if (exists) {
@@ -614,6 +615,7 @@ export function synchronizeLayoutWithChildren(
           i: String(child.key)
         });
       }
+     }
     }
   });
 
