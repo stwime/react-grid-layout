@@ -1,6 +1,6 @@
 {
   "_from": "github:stwime/react-grid-layout",
-  "_id": "react-grid-layout@0.16.3",
+  "_id": "react-grid-layout@0.16.4",
   "_inBundle": false,
   "_integrity": "sha1-VRpAeB1qlAbKORPqF8cWQGl23Hk=",
   "_location": "/react-grid-layout",
@@ -125,5 +125,5 @@
     "validate": "npm ls",
     "view-example": "make view-example"
   },
-  "version": "0.16.3"
+  "version": "0.16.4"
 }

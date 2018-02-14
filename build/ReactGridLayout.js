@@ -78,7 +78,9 @@ var ReactGridLayout = function (_React$Component) {
 
     // We need to regenerate the layout.
     if (newLayoutBase) {
-      var newLayout = (0, _utils.synchronizeLayoutWithChildren)(newLayoutBase, nextProps.children, nextProps.cols, this.compactType(nextProps));
+      var newLayout = (0, _utils.synchronizeLayoutWithChildren)(newLayoutBase, nextProps.children.filter(function (child) {
+        return child;
+      }), nextProps.cols, this.compactType(nextProps));
       var _oldLayout = this.state.layout;
       this.setState({ layout: newLayout });
       this.onLayoutMaybeChanged(newLayout, _oldLayout);
@@ -430,7 +432,7 @@ var ReactGridLayout = function (_React$Component) {
       "div",
       { className: mergedClassName, style: mergedStyle },
       _react2.default.Children.map(this.props.children, function (child) {
-        return _this2.processGridItem(child);
+        return child ? _this2.processGridItem(child) : '';
       }),
       this.placeholder()
     );
@@ -536,7 +538,9 @@ ReactGridLayout.propTypes = {
 
   // Children must not have duplicate keys.
   children: function children(props, propName) {
-    var children = props[propName];
+    var children = props[propName].filter(function (child) {
+      return child;
+    });
 
     // Check children keys for duplicates. Throw if found.
     var keys = {};

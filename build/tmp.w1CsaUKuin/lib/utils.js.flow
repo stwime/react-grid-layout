@@ -619,6 +619,8 @@ export function synchronizeLayoutWithChildren(
     }
   });
 
+  // Filter non truthy entries
+  layout = layout.filter(x => x)
   // Correct the layout.
   layout = correctBounds(layout, { cols: cols });
   layout = compact(layout, compactType, cols);

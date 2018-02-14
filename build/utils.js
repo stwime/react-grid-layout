@@ -515,6 +515,10 @@ function synchronizeLayoutWithChildren(initialLayout, children, cols, compactTyp
     }
   });
 
+  // Filter non truthy entries
+  layout = layout.filter(function (x) {
+    return x;
+  });
   // Correct the layout.
   layout = correctBounds(layout, { cols: cols });
   layout = compact(layout, compactType, cols);

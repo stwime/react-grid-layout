@@ -182,7 +182,7 @@ export default class ReactGridLayout extends React.Component<Props, State> {
 
     // Children must not have duplicate keys.
     children: function(props: Props, propName: string) {
-      var children = props[propName];
+      var children = props[propName].filter(child => child);
 
       // Check children keys for duplicates. Throw if found.
       var keys = {};
@@ -282,7 +282,7 @@ export default class ReactGridLayout extends React.Component<Props, State> {
     if (newLayoutBase) {
       const newLayout = synchronizeLayoutWithChildren(
         newLayoutBase,
-        nextProps.children,
+        nextProps.children.filter((child) => child),
         nextProps.cols,
         this.compactType(nextProps)
       );
@@ -619,8 +619,8 @@ export default class ReactGridLayout extends React.Component<Props, State> {
 
     return (
       <div className={mergedClassName} style={mergedStyle}>
-        {React.Children.map(this.props.children, child =>
-          this.processGridItem(child)
+        {React.Children.map(this.props.children, child => 
+          child ? this.processGridItem(child) : ''
         )}
         {this.placeholder()}
       </div>
